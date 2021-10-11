@@ -22,7 +22,17 @@ The following **bonus** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-![](https://i.imgur.com/bpyantJ.gif)
+
+Gif showing opening app and seeing landing screen:
+![Gif showing app logo and walkthrough](https://i.imgur.com/BfPMo0h.gif)
+
+Gif showing going from landing screen to log in and the rest of the implemented user stories:
+![Gif showing rest of walkthrough](https://i.imgur.com/bpyantJ.gif)
 
 
-If above gif does not work/load, view gif walkthrough here: https://i.imgur.com/bpyantJ.gif
+If above gifs do not work/load, view the following two-part gif walkthrough here:
+
+Gif showing app logo and walkthrough:
+https://i.imgur.com/BfPMo0h.gif
+Gif showing rest of walkthrough:
+https://i.imgur.com/bpyantJ.gif
