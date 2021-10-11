@@ -34,5 +34,6 @@ If above gifs do not work/load, view the following two-part gif walkthrough here
 
 Gif showing app logo, landing screen, then log-in screen walkthrough:
 https://i.imgur.com/BfPMo0h.gif
+
 Gif showing rest of walkthrough:
 https://i.imgur.com/bpyantJ.gif
