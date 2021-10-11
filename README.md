@@ -23,7 +23,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-Gif showing opening app,seeing landing screen, and then seeing log-in screen after some time:
+Gif showing opening app, seeing landing screen, and then seeing log-in screen after some time:
 ![Gif showing app logo and walkthrough](https://i.imgur.com/BfPMo0h.gif)
 
 Gif showing going from landing screen to log in and the rest of the implemented user stories:
