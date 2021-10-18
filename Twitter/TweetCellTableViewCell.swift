@@ -17,11 +17,28 @@ class TweetCellTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favButton: UIButton!
     
-    @IBAction func retweet(_ sender: Any) {
-    }
-    
     var favorited:Bool = false
     var tweetId:Int = -1 // negative number means not set
+    
+    @IBAction func retweet(_ sender: Any) {
+        TwitterAPICaller.client?.retweet(tweetId: tweetId, success: {
+            self.setRetweeted(isRetweeted: true)
+        }, failure: { (error) in
+            print("Error is retweeting: \(error)")  
+        })
+    }
+    
+    func setRetweeted( isRetweeted:Bool) {
+        if(isRetweeted) { // if retweeted already/has been retweeted
+            retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+            retweetButton.isEnabled = false
+        } else { // if not retweeted
+            retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+            retweetButton.isEnabled = true
+        }
+    }
+    
+
     
     @IBAction func favoriteTweet(_ sender: Any) {
         // if we tap on favorite button it should toggle
