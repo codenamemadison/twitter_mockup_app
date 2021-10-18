@@ -13,16 +13,24 @@ class HomeTableViewController: UITableViewController {
     var numberOfTweet: Int!
     
     let myRefreshControl = UIRefreshControl()
-    override func viewDidLoad() {
+    override func viewDidLoad() { // only gets called once
         super.viewDidLoad()
-        loadTweets()
+        //loadTweets()
         
         // when user tries to pull down to refresh
         
         // target = where we want th action to happe
         // action = what we want to do
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
-        tableView.refreshControl = myRefreshControl // telling table which refresh control to use
+        self.tableView.refreshControl = myRefreshControl // telling table which refresh control to use
+        // text cell should grow based on amount of text
+        self.tableView.rowHeight = UITableView.automaticDimension // row height will be automatically calculated
+        self.tableView.estimatedRowHeight = 150 // give starting basis
+    }
+    // we want tweets to be updated/loaded again to include newly published tweets so viewDidAppear gets called every time (the view appears)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated) // keeps doing what it does
+        self.loadTweets()
     }
 
     @objc func loadTweets() {
@@ -79,6 +87,7 @@ class HomeTableViewController: UITableViewController {
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // identifier will be nickname of this Prototype Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCellTableViewCell
@@ -92,9 +101,14 @@ class HomeTableViewController: UITableViewController {
         if let imageData = data {
             cell.profileImageView.image = UIImage(data: imageData)
         }
+        // need to figure out if current tweet is already favorited or not
         
+        cell.setFavorite(isFavorited: tweetArray[indexPath.row]["favorited"] as! Bool) // setting favorite status (?)
+        cell.tweetId = tweetArray[indexPath.row]["id"]  as! Int
         return cell
     }
+ 
+ 
      
     // MARK: - Table view data source
 
@@ -107,6 +121,5 @@ class HomeTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows (per section)
         return tweetArray.count
     }
-
 
 }
